@@ -1,0 +1,1393 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Zenz Media – We Edit. You Create.</title>
+  <meta name="description" content="Zenz Media is a premium post-production agency for elite creators and brands. Branding, reel editing, video editing, short movie editing and more." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    /* ===================== RESET & BASE ===================== */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:        #080808;
+      --bg-card:   #111111;
+      --bg-sec:    #181818;
+      --fg:        #f5f5f5;
+      --fg-muted:  #888888;
+      --border:    #222222;
+      --gold:      #f5a623;
+      --gold-dark: #c47f0a;
+      --gold-glow: rgba(245,166,35,.18);
+      --radius:    12px;
+      --radius-lg: 20px;
+      --radius-xl: 28px;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Manrope', sans-serif;
+      background: var(--bg);
+      color: var(--fg);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    h1, h2, h3, h4, h5 {
+      font-family: 'Syne', sans-serif;
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    img { display: block; max-width: 100%; }
+    ul { list-style: none; }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* ===================== BUTTONS ===================== */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 14px 28px;
+      border-radius: var(--radius);
+      font-family: 'Manrope', sans-serif;
+      font-weight: 600;
+      font-size: 15px;
+      cursor: pointer;
+      border: none;
+      transition: all .25s ease;
+      text-decoration: none;
+    }
+
+    .btn-gold {
+      background: var(--gold);
+      color: #0a0a0a;
+      box-shadow: 0 0 24px var(--gold-glow);
+    }
+    .btn-gold:hover {
+      background: #ffc04d;
+      box-shadow: 0 0 36px rgba(245,166,35,.35);
+      transform: translateY(-1px);
+    }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--fg);
+      border: 1px solid var(--border);
+    }
+    .btn-outline:hover {
+      border-color: var(--gold);
+      color: var(--gold);
+      transform: translateY(-1px);
+    }
+
+    /* ===================== NAVBAR ===================== */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      padding: 20px 0;
+      transition: all .3s ease;
+    }
+    nav.scrolled {
+      background: rgba(8,8,8,.85);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border);
+      padding: 14px 0;
+    }
+
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-family: 'Syne', sans-serif;
+      font-weight: 700;
+      font-size: 20px;
+      letter-spacing: .08em;
+    }
+    .logo-icon {
+      width: 34px; height: 34px;
+      background: var(--gold);
+      border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .logo-icon svg { width: 16px; height: 16px; fill: #0a0a0a; }
+
+    .nav-links {
+      display: flex;
+      gap: 36px;
+    }
+    .nav-links a {
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--fg-muted);
+      transition: color .2s;
+    }
+    .nav-links a:hover { color: var(--gold); }
+
+    .nav-cta { display: flex; }
+
+    /* hamburger */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      background: none;
+      border: none;
+      padding: 4px;
+    }
+    .hamburger span {
+      display: block;
+      width: 24px; height: 2px;
+      background: var(--fg);
+      border-radius: 2px;
+      transition: all .3s;
+    }
+
+    .mobile-menu {
+      display: none;
+      flex-direction: column;
+      gap: 0;
+      background: var(--bg-card);
+      border-top: 1px solid var(--border);
+      padding: 8px 0;
+    }
+    .mobile-menu a {
+      padding: 14px 24px;
+      font-size: 17px;
+      font-weight: 500;
+      color: var(--fg);
+      border-bottom: 1px solid var(--border);
+      transition: color .2s;
+    }
+    .mobile-menu a:hover { color: var(--gold); }
+    .mobile-menu .btn {
+      margin: 16px 24px 8px;
+      justify-content: center;
+    }
+
+    /* ===================== HERO ===================== */
+    #hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      overflow: hidden;
+      padding-top: 80px;
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 80% 60% at 50% 40%, rgba(245,166,35,.12) 0%, transparent 70%),
+        linear-gradient(180deg, transparent 40%, var(--bg) 100%);
+      z-index: 0;
+    }
+    .hero-bg::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: url('https://images.unsplash.com/photo-1536240478700-b869ad10e2d4?auto=format&fit=crop&w=1600&q=60') center/cover no-repeat;
+      opacity: .12;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      max-width: 880px;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 18px;
+      border-radius: 100px;
+      background: rgba(245,166,35,.08);
+      border: 1px solid rgba(245,166,35,.25);
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--gold);
+      margin-bottom: 32px;
+    }
+    .hero-badge .dot {
+      width: 7px; height: 7px;
+      border-radius: 50%;
+      background: var(--gold);
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: .4; }
+    }
+
+    .hero-h1 {
+      font-size: clamp(52px, 9vw, 96px);
+      font-weight: 800;
+      margin-bottom: 24px;
+    }
+    .hero-h1 .gold {
+      background: linear-gradient(90deg, var(--gold), #ffd580);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      text-shadow: none;
+      filter: drop-shadow(0 0 24px rgba(245,166,35,.4));
+    }
+
+    .hero-sub {
+      font-size: clamp(16px, 2vw, 20px);
+      color: var(--fg-muted);
+      max-width: 580px;
+      margin: 0 auto 40px;
+    }
+
+    .hero-btns {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .scroll-line {
+      position: absolute;
+      bottom: 36px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+      z-index: 1;
+    }
+    .scroll-line span {
+      font-size: 10px;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: var(--fg-muted);
+    }
+    .scroll-line .line {
+      width: 1px;
+      height: 48px;
+      background: linear-gradient(to bottom, var(--gold), transparent);
+    }
+
+    /* ===================== SECTION HEADERS ===================== */
+    .section-label {
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: .15em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 14px;
+    }
+
+    .section-title {
+      font-size: clamp(32px, 5vw, 52px);
+      font-weight: 800;
+      margin-bottom: 20px;
+    }
+
+    .section-sub {
+      font-size: 17px;
+      color: var(--fg-muted);
+      max-width: 560px;
+      line-height: 1.7;
+    }
+
+    /* ===================== SERVICES ===================== */
+    #services {
+      padding: 100px 0;
+      background: var(--bg);
+    }
+
+    .services-header { margin-bottom: 64px; }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 20px;
+    }
+
+    .service-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 36px 32px;
+      transition: border-color .3s, transform .3s;
+      position: relative;
+      overflow: hidden;
+    }
+    .service-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(245,166,35,.06) 0%, transparent 60%);
+      opacity: 0;
+      transition: opacity .3s;
+    }
+    .service-card:hover { border-color: rgba(245,166,35,.4); transform: translateY(-4px); }
+    .service-card:hover::before { opacity: 1; }
+
+    .service-icon {
+      width: 52px; height: 52px;
+      border-radius: 12px;
+      background: var(--bg-sec);
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 24px;
+      transition: background .3s;
+    }
+    .service-card:hover .service-icon { background: rgba(245,166,35,.15); }
+    .service-icon svg { width: 26px; height: 26px; stroke: var(--gold); fill: none; stroke-width: 1.8; }
+
+    .service-card h4 {
+      font-size: 20px;
+      font-weight: 700;
+      margin-bottom: 12px;
+      transition: color .2s;
+    }
+    .service-card:hover h4 { color: var(--gold); }
+    .service-card p { font-size: 14px; color: var(--fg-muted); line-height: 1.7; }
+
+    /* ===================== PORTFOLIO ===================== */
+    #work {
+      padding: 100px 0;
+      background: var(--bg-card);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .portfolio-top {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      margin-bottom: 48px;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+
+    .filters {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .filter-btn {
+      padding: 8px 20px;
+      border-radius: 100px;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      border: 1px solid var(--border);
+      background: var(--bg-sec);
+      color: var(--fg-muted);
+      transition: all .2s;
+    }
+    .filter-btn:hover, .filter-btn.active {
+      background: var(--gold);
+      color: #0a0a0a;
+      border-color: var(--gold);
+      box-shadow: 0 0 16px var(--gold-glow);
+    }
+
+    .portfolio-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 20px;
+    }
+
+    .portfolio-item {
+      position: relative;
+      aspect-ratio: 16/10;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      cursor: pointer;
+    }
+
+    .portfolio-item img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      transition: transform .6s ease;
+    }
+    .portfolio-item:hover img { transform: scale(1.08); }
+
+    .portfolio-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(8,8,8,.9) 0%, rgba(8,8,8,.2) 60%, transparent 100%);
+      opacity: .8;
+      transition: opacity .3s;
+    }
+    .portfolio-item:hover .portfolio-overlay { opacity: 1; }
+
+    .play-btn {
+      position: absolute;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%) scale(.7);
+      width: 64px; height: 64px;
+      border-radius: 50%;
+      background: rgba(245,166,35,.9);
+      display: flex; align-items: center; justify-content: center;
+      opacity: 0;
+      transition: all .4s ease;
+    }
+    .play-btn svg { width: 22px; height: 22px; fill: #0a0a0a; margin-left: 3px; }
+    .portfolio-item:hover .play-btn { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+
+    .portfolio-info {
+      position: absolute;
+      bottom: 0; left: 0;
+      padding: 24px;
+      transform: translateY(8px);
+      transition: transform .3s;
+    }
+    .portfolio-item:hover .portfolio-info { transform: translateY(0); }
+
+    .portfolio-cat {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 6px;
+    }
+    .portfolio-info h4 { font-size: 18px; font-weight: 700; }
+
+    /* ===================== WHY US ===================== */
+    #why-us {
+      padding: 100px 0;
+      background: var(--bg);
+    }
+
+    .why-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 72px;
+      align-items: center;
+    }
+
+    .why-img {
+      position: relative;
+      border-radius: var(--radius-xl);
+      overflow: hidden;
+      border: 1px solid var(--border);
+    }
+    .why-img img { width: 100%; aspect-ratio: 4/3; object-fit: cover; }
+    .why-img::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(8,8,8,.6) 0%, transparent 60%);
+    }
+
+    .why-content .section-sub { margin-bottom: 48px; }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 32px;
+    }
+
+    .stat-item {
+      border-left: 2px solid var(--gold);
+      padding-left: 20px;
+    }
+    .stat-val {
+      font-family: 'Syne', sans-serif;
+      font-size: 40px;
+      font-weight: 800;
+      color: var(--fg);
+      margin-bottom: 4px;
+    }
+    .stat-label { font-size: 14px; color: var(--fg-muted); }
+
+    /* ===================== PROCESS ===================== */
+    #process {
+      padding: 100px 0;
+      background: var(--bg-card);
+      border-top: 1px solid var(--border);
+    }
+
+    .process-header { text-align: center; margin-bottom: 72px; }
+
+    .process-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 40px;
+      position: relative;
+    }
+
+    .process-step .step-num {
+      font-family: 'Syne', sans-serif;
+      font-size: 72px;
+      font-weight: 800;
+      color: rgba(245,166,35,.1);
+      line-height: 1;
+      margin-bottom: 20px;
+    }
+    .process-step h4 { font-size: 22px; font-weight: 700; margin-bottom: 12px; }
+    .process-step p { font-size: 14px; color: var(--fg-muted); line-height: 1.75; }
+
+    /* ===================== TESTIMONIALS ===================== */
+    #testimonials {
+      padding: 100px 0;
+      background: var(--bg);
+      position: relative;
+    }
+
+    #testimonials::before {
+      content: '';
+      position: absolute;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      width: 700px; height: 700px;
+      background: radial-gradient(circle, rgba(245,166,35,.05) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .testi-header { text-align: center; margin-bottom: 64px; }
+
+    .testi-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 20px;
+    }
+
+    .testi-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 36px;
+      position: relative;
+      transition: border-color .3s;
+    }
+    .testi-card:hover { border-color: rgba(245,166,35,.3); }
+
+    .quote-icon {
+      position: absolute;
+      top: 24px; right: 24px;
+      width: 44px; height: 44px;
+      color: var(--border);
+    }
+
+    .stars { display: flex; gap: 4px; margin-bottom: 20px; }
+    .stars svg { width: 18px; height: 18px; fill: var(--gold); }
+
+    .testi-text {
+      font-size: 15px;
+      line-height: 1.75;
+      color: var(--fg);
+      margin-bottom: 28px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .testi-author strong { display: block; font-weight: 700; margin-bottom: 2px; }
+    .testi-author span { font-size: 13px; color: var(--gold); }
+
+    /* ===================== PRICING ===================== */
+    #pricing {
+      padding: 100px 0;
+      background: var(--bg-card);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .pricing-header { text-align: center; margin-bottom: 64px; }
+    .pricing-header .section-sub { margin: 0 auto; }
+
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 24px;
+      align-items: center;
+    }
+
+    .pricing-card {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-xl);
+      padding: 40px 36px;
+      transition: transform .3s;
+    }
+    .pricing-card.highlight {
+      border: 2px solid var(--gold);
+      box-shadow: 0 0 48px rgba(245,166,35,.15);
+      transform: translateY(-12px);
+      background: linear-gradient(160deg, var(--bg-card) 0%, var(--bg) 100%);
+      position: relative;
+    }
+
+    .popular-badge {
+      position: absolute;
+      top: -14px; left: 50%;
+      transform: translateX(-50%);
+      background: var(--gold);
+      color: #0a0a0a;
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      padding: 5px 14px;
+      border-radius: 100px;
+      white-space: nowrap;
+    }
+
+    .plan-name { font-size: 24px; font-weight: 700; margin-bottom: 8px; }
+    .plan-desc { font-size: 14px; color: var(--fg-muted); min-height: 42px; margin-bottom: 28px; }
+
+    .plan-price {
+      font-family: 'Syne', sans-serif;
+      font-size: 48px;
+      font-weight: 800;
+      margin-bottom: 32px;
+    }
+    .plan-price span { font-size: 16px; font-weight: 500; color: var(--fg-muted); }
+
+    .plan-features { margin-bottom: 36px; display: flex; flex-direction: column; gap: 14px; }
+    .plan-feature {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      font-size: 14px;
+    }
+    .plan-feature svg { width: 18px; height: 18px; fill: none; stroke: var(--gold); stroke-width: 2; flex-shrink: 0; margin-top: 1px; }
+
+    /* ===================== CONTACT ===================== */
+    #contact {
+      padding: 100px 0;
+      background: var(--bg);
+    }
+
+    .contact-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 72px;
+    }
+
+    .contact-info .section-sub { margin-bottom: 48px; }
+
+    .contact-details { display: flex; flex-direction: column; gap: 24px; }
+
+    .contact-detail {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+    .contact-detail-icon {
+      width: 48px; height: 48px;
+      border-radius: 50%;
+      background: var(--bg-sec);
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+    .contact-detail-icon svg { width: 20px; height: 20px; stroke: var(--gold); fill: none; stroke-width: 1.8; }
+    .contact-detail-text small {
+      display: block;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: .1em;
+      color: var(--fg-muted);
+      margin-bottom: 4px;
+    }
+    .contact-detail-text a, .contact-detail-text span {
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--fg);
+      transition: color .2s;
+    }
+    .contact-detail-text a:hover { color: var(--gold); }
+
+    /* Form */
+    .contact-form {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-xl);
+      padding: 44px 40px;
+    }
+
+    .form-group { margin-bottom: 22px; }
+    .form-group label {
+      display: block;
+      font-size: 13px;
+      font-weight: 600;
+      margin-bottom: 8px;
+      color: var(--fg);
+    }
+    .form-group input,
+    .form-group textarea {
+      width: 100%;
+      padding: 13px 16px;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      color: var(--fg);
+      font-family: 'Manrope', sans-serif;
+      font-size: 14px;
+      outline: none;
+      transition: border-color .2s;
+    }
+    .form-group input::placeholder,
+    .form-group textarea::placeholder { color: var(--fg-muted); }
+    .form-group input:focus,
+    .form-group textarea:focus { border-color: var(--gold); box-shadow: 0 0 0 3px rgba(245,166,35,.1); }
+    .form-group textarea { resize: vertical; min-height: 130px; }
+
+    .form-submit { width: 100%; justify-content: center; font-size: 16px; padding: 16px; }
+
+    /* ===================== FOOTER ===================== */
+    footer {
+      background: var(--bg-card);
+      border-top: 1px solid var(--border);
+      padding: 80px 0 40px;
+    }
+
+    .footer-top {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      gap: 48px;
+      margin-bottom: 64px;
+    }
+
+    .footer-brand p {
+      font-size: 14px;
+      color: var(--fg-muted);
+      max-width: 360px;
+      line-height: 1.75;
+      margin: 20px 0 32px;
+    }
+
+    .social-links { display: flex; gap: 12px; }
+    .social-link {
+      width: 40px; height: 40px;
+      border-radius: 50%;
+      background: var(--bg-sec);
+      display: flex; align-items: center; justify-content: center;
+      color: var(--fg-muted);
+      transition: all .2s;
+    }
+    .social-link:hover { background: var(--gold); color: #0a0a0a; }
+    .social-link svg { width: 18px; height: 18px; stroke: currentColor; fill: none; stroke-width: 1.8; }
+
+    .footer-col h5 {
+      font-size: 15px;
+      font-weight: 700;
+      margin-bottom: 24px;
+    }
+    .footer-col ul { display: flex; flex-direction: column; gap: 14px; }
+    .footer-col a {
+      font-size: 14px;
+      color: var(--fg-muted);
+      transition: color .2s;
+    }
+    .footer-col a:hover { color: var(--gold); }
+
+    .footer-bottom {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-top: 32px;
+      border-top: 1px solid var(--border);
+      font-size: 13px;
+      color: var(--fg-muted);
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .footer-bottom a { transition: color .2s; }
+    .footer-bottom a:hover { color: var(--fg); }
+    .footer-legal { display: flex; gap: 24px; }
+
+    /* ===================== ANIMATIONS ===================== */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity .7s ease, transform .7s ease;
+    }
+    .fade-up.visible { opacity: 1; transform: translateY(0); }
+
+    .fade-up:nth-child(2) { transition-delay: .1s; }
+    .fade-up:nth-child(3) { transition-delay: .2s; }
+    .fade-up:nth-child(4) { transition-delay: .3s; }
+    .fade-up:nth-child(5) { transition-delay: .4s; }
+    .fade-up:nth-child(6) { transition-delay: .5s; }
+
+    /* ===================== RESPONSIVE ===================== */
+    @media (max-width: 900px) {
+      .why-inner { grid-template-columns: 1fr; }
+      .why-img { display: none; }
+      .contact-inner { grid-template-columns: 1fr; }
+      .footer-top { grid-template-columns: 1fr 1fr; }
+      .footer-brand { grid-column: 1 / -1; }
+      .pricing-card.highlight { transform: none; }
+    }
+
+    @media (max-width: 700px) {
+      .nav-links, .nav-cta { display: none; }
+      .hamburger { display: flex; }
+      .footer-top { grid-template-columns: 1fr; }
+      .portfolio-grid { grid-template-columns: 1fr; }
+      .stats-grid { grid-template-columns: 1fr 1fr; }
+      .contact-form { padding: 28px 24px; }
+      .process-grid { grid-template-columns: 1fr 1fr; }
+    }
+
+    @media (max-width: 480px) {
+      .process-grid { grid-template-columns: 1fr; }
+      .stats-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ===================== NAVBAR ===================== -->
+<nav id="navbar">
+  <div class="container nav-inner">
+    <a href="#" class="nav-logo">
+      <div class="logo-icon">
+        <svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg>
+      </div>
+      ZENZ MEDIA
+    </a>
+    <ul class="nav-links">
+      <li><a href="#services">Services</a></li>
+      <li><a href="#work">Work</a></li>
+      <li><a href="#process">Process</a></li>
+      <li><a href="#pricing">Pricing</a></li>
+    </ul>
+    <div class="nav-cta">
+      <a href="#contact" class="btn btn-gold">Start a Project</a>
+    </div>
+    <button class="hamburger" id="hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <div class="mobile-menu" id="mobile-menu">
+    <a href="#services" class="mobile-link">Services</a>
+    <a href="#work" class="mobile-link">Work</a>
+    <a href="#process" class="mobile-link">Process</a>
+    <a href="#pricing" class="mobile-link">Pricing</a>
+    <a href="#contact" class="btn btn-gold mobile-link">Start a Project</a>
+  </div>
+</nav>
+
+<!-- ===================== HERO ===================== -->
+<section id="hero">
+  <div class="hero-bg"></div>
+  <div class="container hero-content">
+    <div class="hero-badge">
+      <span class="dot"></span>
+      Accepting new clients for Q3
+    </div>
+    <h1 class="hero-h1">WE EDIT.<br><span class="gold">YOU CREATE.</span></h1>
+    <p class="hero-sub">Premium post-production for elite creators and forward-thinking brands. We turn raw footage into high-retention masterpieces.</p>
+    <div class="hero-btns">
+      <a href="#contact" class="btn btn-gold">Start Your Project</a>
+      <a href="#work" class="btn btn-outline">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="5,3 19,12 5,21"/></svg>
+        View Showreel
+      </a>
+    </div>
+  </div>
+  <div class="scroll-line">
+    <span>Scroll</span>
+    <div class="line"></div>
+  </div>
+</section>
+
+<!-- ===================== SERVICES ===================== -->
+<section id="services">
+  <div class="container">
+    <div class="services-header">
+      <p class="section-label">Our Expertise</p>
+      <h2 class="section-title">Full-Suite Production.</h2>
+      <p class="section-sub">We don't just cut clips. We build narratives, engineer retention, and establish visual identities that set you apart from the noise.</p>
+    </div>
+    <div class="services-grid">
+      <div class="service-card fade-up">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg>
+        </div>
+        <h4>Branding &amp; Strategy</h4>
+        <p>We craft cohesive visual identities that resonate with your audience and elevate your channel's authority across every platform.</p>
+      </div>
+      <div class="service-card fade-up">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+        </div>
+        <h4>Reel &amp; Short-Form Editing</h4>
+        <p>High-retention, fast-paced editing designed for TikTok, Instagram Reels, and YouTube Shorts that hook viewers in seconds.</p>
+      </div>
+      <div class="service-card fade-up">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="15" rx="2"/><path d="M16 2 L8 2 L8 7"/><line x1="12" y1="12" x2="12" y2="17"/><line x1="9" y1="14.5" x2="15" y2="14.5"/></svg>
+        </div>
+        <h4>Cinematic Video Editing</h4>
+        <p>Long-form YouTube videos and documentaries edited with pacing, narrative flow, and elite polish that retains viewers.</p>
+      </div>
+      <div class="service-card fade-up">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2"/></svg>
+        </div>
+        <h4>Color Grading</h4>
+        <p>Industry-standard color correction and grading to give your footage a premium, film-like aesthetic that is instantly recognizable.</p>
+      </div>
+      <div class="service-card fade-up">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+        </div>
+        <h4>Motion Graphics</h4>
+        <p>Custom lower thirds, intros, and complex visual effects that make your content impossible to ignore on any screen.</p>
+      </div>
+      <div class="service-card fade-up">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12a10 10 0 1 0 20 0 10 10 0 0 0-20 0Z"/><path d="M10 8l6 4-6 4V8z"/></svg>
+        </div>
+        <h4>Short Movie Production</h4>
+        <p>End-to-end post-production for narrative short films, including sound design, VFX, and final audio mixing.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== PORTFOLIO ===================== -->
+<section id="work">
+  <div class="container">
+    <div class="portfolio-top">
+      <div>
+        <p class="section-label">Selected Work</p>
+        <h2 class="section-title">Featured Projects.</h2>
+      </div>
+      <div class="filters">
+        <button class="filter-btn active" onclick="filterPortfolio(this,'all')">All</button>
+        <button class="filter-btn" onclick="filterPortfolio(this,'commercial')">Commercial</button>
+        <button class="filter-btn" onclick="filterPortfolio(this,'short-film')">Short Film</button>
+        <button class="filter-btn" onclick="filterPortfolio(this,'youtube')">YouTube</button>
+        <button class="filter-btn" onclick="filterPortfolio(this,'reels')">Reels</button>
+      </div>
+    </div>
+    <div class="portfolio-grid">
+      <div class="portfolio-item fade-up" data-category="commercial">
+        <img src="https://images.unsplash.com/photo-1604085449764-88cb07a4a21e?auto=format&fit=crop&q=80&w=900" alt="Neon Nights Commercial" loading="lazy"/>
+        <div class="portfolio-overlay"></div>
+        <div class="play-btn"><svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg></div>
+        <div class="portfolio-info">
+          <p class="portfolio-cat">Commercial</p>
+          <h4>Neon Nights Commercial</h4>
+        </div>
+      </div>
+      <div class="portfolio-item fade-up" data-category="short-film">
+        <img src="https://images.unsplash.com/photo-1551368321-1b32eb3714fc?auto=format&fit=crop&q=80&w=900" alt="Urban Athlete Documentary" loading="lazy"/>
+        <div class="portfolio-overlay"></div>
+        <div class="play-btn"><svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg></div>
+        <div class="portfolio-info">
+          <p class="portfolio-cat">Short Film</p>
+          <h4>Urban Athlete Documentary</h4>
+        </div>
+      </div>
+      <div class="portfolio-item fade-up" data-category="youtube">
+        <img src="https://images.unsplash.com/photo-1616423640778-28d1b53229bd?auto=format&fit=crop&q=80&w=900" alt="Tech Review Mastery" loading="lazy"/>
+        <div class="portfolio-overlay"></div>
+        <div class="play-btn"><svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg></div>
+        <div class="portfolio-info">
+          <p class="portfolio-cat">YouTube</p>
+          <h4>Tech Review Mastery</h4>
+        </div>
+      </div>
+      <div class="portfolio-item fade-up" data-category="commercial">
+        <img src="https://images.unsplash.com/photo-1523170335258-f5ed11844a49?auto=format&fit=crop&q=80&w=900" alt="Luxury Watch Promo" loading="lazy"/>
+        <div class="portfolio-overlay"></div>
+        <div class="play-btn"><svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg></div>
+        <div class="portfolio-info">
+          <p class="portfolio-cat">Commercial</p>
+          <h4>Luxury Watch Promo</h4>
+        </div>
+      </div>
+      <div class="portfolio-item fade-up" data-category="reels">
+        <img src="https://images.unsplash.com/photo-1540039155732-d674d40af2a1?auto=format&fit=crop&q=80&w=900" alt="Festival Aftermovie" loading="lazy"/>
+        <div class="portfolio-overlay"></div>
+        <div class="play-btn"><svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg></div>
+        <div class="portfolio-info">
+          <p class="portfolio-cat">Reels</p>
+          <h4>Festival Aftermovie</h4>
+        </div>
+      </div>
+      <div class="portfolio-item fade-up" data-category="short-film">
+        <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&q=80&w=900" alt="Minimalist Architecture" loading="lazy"/>
+        <div class="portfolio-overlay"></div>
+        <div class="play-btn"><svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg></div>
+        <div class="portfolio-info">
+          <p class="portfolio-cat">Short Film</p>
+          <h4>Minimalist Architecture</h4>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== WHY US ===================== -->
+<section id="why-us">
+  <div class="container">
+    <div class="why-inner">
+      <div class="why-img">
+        <img src="https://images.unsplash.com/photo-1598488035139-bdbb2231ce04?auto=format&fit=crop&q=80&w=900" alt="Editing Studio" loading="lazy"/>
+      </div>
+      <div class="why-content">
+        <p class="section-label">Why Choose Us</p>
+        <h2 class="section-title">We Don't Just Edit.<br>We Engineer Attention.</h2>
+        <p class="section-sub">In a world where attention spans are shrinking, generic editing doesn't cut it. We utilize data-driven hooks, dynamic pacing, and cinematic sound design to ensure your audience stays glued to the screen.</p>
+        <div class="stats-grid">
+          <div class="stat-item fade-up"><div class="stat-val">500+</div><div class="stat-label">Videos Delivered</div></div>
+          <div class="stat-item fade-up"><div class="stat-val">50M+</div><div class="stat-label">Views Generated</div></div>
+          <div class="stat-item fade-up"><div class="stat-val">98%</div><div class="stat-label">Client Retention</div></div>
+          <div class="stat-item fade-up"><div class="stat-val">24h</div><div class="stat-label">Turnaround Time</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== PROCESS ===================== -->
+<section id="process">
+  <div class="container">
+    <div class="process-header">
+      <p class="section-label">Our Workflow</p>
+      <h2 class="section-title">Seamless Process.</h2>
+    </div>
+    <div class="process-grid">
+      <div class="process-step fade-up">
+        <div class="step-num">01</div>
+        <h4>Discovery &amp; Brief</h4>
+        <p>We analyze your brand, target audience, and goals to build a custom post-production strategy tailored to you.</p>
+      </div>
+      <div class="process-step fade-up">
+        <div class="step-num">02</div>
+        <h4>The Magic Happens</h4>
+        <p>Our elite editors cut, color, and mix your footage into a polished, high-retention asset that commands attention.</p>
+      </div>
+      <div class="process-step fade-up">
+        <div class="step-num">03</div>
+        <h4>Review &amp; Refine</h4>
+        <p>You review the drafts via Frame.io. We make lightning-fast revisions based on your feedback until it's perfect.</p>
+      </div>
+      <div class="process-step fade-up">
+        <div class="step-num">04</div>
+        <h4>Final Delivery</h4>
+        <p>You receive optimized, platform-ready files ready to publish and dominate the algorithm from day one.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== TESTIMONIALS ===================== -->
+<section id="testimonials">
+  <div class="container">
+    <div class="testi-header">
+      <p class="section-label">Client Success</p>
+      <h2 class="section-title">Don't Just Take Our Word.</h2>
+    </div>
+    <div class="testi-grid">
+      <div class="testi-card fade-up">
+        <svg class="quote-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M3 21c3 0 7-1 7-8V5c0-1.25-.756-2.017-2-2H4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2 1 0 1 0 1 1v1c0 1-1 2-2 2s-1 .008-1 1.031V20c0 1 0 1 1 1zm12 0c3 0 7-1 7-8V5c0-1.25-.757-2.017-2-2h-4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2h.75c0 2.25.25 4-2.75 4v3c0 1 0 1 1 1z"/></svg>
+        <div class="stars">
+          <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        </div>
+        <p class="testi-text">"Zenz completely transformed my channel. Their editing increased my average view duration by 40% in just two months. Absolute game-changers."</p>
+        <div class="testi-author">
+          <strong>Alex Rivera</strong>
+          <span>Tech YouTuber (1.2M Subs)</span>
+        </div>
+      </div>
+      <div class="testi-card fade-up">
+        <svg class="quote-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M3 21c3 0 7-1 7-8V5c0-1.25-.756-2.017-2-2H4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2 1 0 1 0 1 1v1c0 1-1 2-2 2s-1 .008-1 1.031V20c0 1 0 1 1 1zm12 0c3 0 7-1 7-8V5c0-1.25-.757-2.017-2-2h-4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2h.75c0 2.25.25 4-2.75 4v3c0 1 0 1 1 1z"/></svg>
+        <div class="stars">
+          <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        </div>
+        <p class="testi-text">"The commercial they edited for our Q1 launch was phenomenal. They understood the energetic, cinematic vibe we wanted and delivered flawlessly."</p>
+        <div class="testi-author">
+          <strong>Sarah Chen</strong>
+          <span>Founder, Elevate Fitness</span>
+        </div>
+      </div>
+      <div class="testi-card fade-up">
+        <svg class="quote-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M3 21c3 0 7-1 7-8V5c0-1.25-.756-2.017-2-2H4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2 1 0 1 0 1 1v1c0 1-1 2-2 2s-1 .008-1 1.031V20c0 1 0 1 1 1zm12 0c3 0 7-1 7-8V5c0-1.25-.757-2.017-2-2h-4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2h.75c0 2.25.25 4-2.75 4v3c0 1 0 1 1 1z"/></svg>
+        <div class="stars">
+          <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        </div>
+        <p class="testi-text">"I used to spend 20 hours a week editing. Now I just send the raw files to Zenz and get back masterpieces. Best investment for my business."</p>
+        <div class="testi-author">
+          <strong>Marcus Thorne</strong>
+          <span>Content Creator</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== PRICING ===================== -->
+<section id="pricing">
+  <div class="container">
+    <div class="pricing-header">
+      <p class="section-label">Investment</p>
+      <h2 class="section-title">Simple, Transparent Pricing.</h2>
+      <p class="section-sub">Stop worrying about hourly rates. Choose a plan that fits your output volume and scale your content effortlessly.</p>
+    </div>
+    <div class="pricing-grid">
+      <!-- Starter -->
+      <div class="pricing-card fade-up">
+        <div class="plan-name">Starter</div>
+        <div class="plan-desc">Perfect for growing creators needing consistent short-form content.</div>
+        <div class="plan-price">$999<span>/mo</span></div>
+        <ul class="plan-features">
+          <li class="plan-feature"><svg viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg> 15 Short-form videos (Reels/TikToks)</li>
+          <li class="plan-feature"><svg viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg> Basic color grading</li>
+          <li class="plan-feature"><svg viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg> Standard motion graphics</li>
+          <li class="plan-feature"><svg viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg> 48h Turnaround time</li>
+          <li class="plan-feature"><svg viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg> 1 Revision round per video</li>
+        </ul>
+        <a href="#contact" class="btn btn-outline" style="width:100%;justify-content:center;">Get Started</a>
+      </div>
+      <!-- Pro -->
+      <div class="pricing-card highlight fade-up">
+        <div class="popular-badge">Most Popular</div>
+        <div class="plan-name">Pro</div>
+        <div class="plan-desc">The sweet spot for established creators making long &amp; short-form.</div>
+        <div class="plan-price">$2,499<span>/mo</span></div>
+        <ul class="plan-features">
+          <li class="plan-feature"><svg viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg> 4 Long-form YouTube videos</li>
+          <li class="plan-feature"><svg viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg> 12 Short-form repurposed videos</li>
+          <li class="plan-feature"><svg viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg> Advanced cinematic color grading</li>
+          <li class="plan-feature"><svg viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg> Custom animations &amp; lower thirds</li>
+          <li class="plan-feature"><svg viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg> Thumbnail design included</li>
+          <li class="plan-feature"><svg viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg> Dedicated project manager</li>
+        </ul>
+        <a href="#contact" class="btn btn-gold" style="width:100%;justify-content:center;">Get Started</a>
+      </div>
+      <!-- Agency -->
+      <div class="pricing-card fade-up">
+        <div class="plan-name">Agency</div>
+        <div class="plan-desc">Full-scale post-production department for brands and elite channels.</div>
+        <div class="plan-price">Custom</div>
+        <ul class="plan-features">
+          <li class="plan-feature"><svg viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg> Unlimited short &amp; long-form editing</li>
+          <li class="plan-feature"><svg viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg> Full documentary &amp; short film edits</li>
+          <li class="plan-feature"><svg viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg> VFX &amp; advanced compositing</li>
+          <li class="plan-feature"><svg viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg> Sound design &amp; audio mixing</li>
+          <li class="plan-feature"><svg viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg> Priority 24/7 Slack support</li>
+          <li class="plan-feature"><svg viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg> Strategic content consultation</li>
+        </ul>
+        <a href="#contact" class="btn btn-outline" style="width:100%;justify-content:center;">Contact Us</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== CONTACT ===================== -->
+<section id="contact">
+  <div class="container">
+    <div class="contact-inner">
+      <div class="contact-info">
+        <p class="section-label">Let's Talk</p>
+        <h2 class="section-title">Ready to Elevate Your Content?</h2>
+        <p class="section-sub">Drop us a line with your project details, channel links, or general inquiries. We'll get back to you within 24 hours to discuss how we can help.</p>
+        <div class="contact-details">
+          <div class="contact-detail">
+            <div class="contact-detail-icon">
+              <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            </div>
+            <div class="contact-detail-text">
+              <small>Email</small>
+              <a href="mailto:hello@zenzmedia.com">hello@zenzmedia.com</a>
+            </div>
+          </div>
+          <div class="contact-detail">
+            <div class="contact-detail-icon">
+              <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            </div>
+            <div class="contact-detail-text">
+              <small>Studio</small>
+              <span>Los Angeles, CA</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="contact-form">
+        <form id="contact-form" onsubmit="handleSubmit(event)">
+          <div class="form-group">
+            <label for="name">Name / Brand</label>
+            <input type="text" id="name" name="name" placeholder="John Doe" required />
+          </div>
+          <div class="form-group">
+            <label for="email">Email Address</label>
+            <input type="email" id="email" name="email" placeholder="john@example.com" required />
+          </div>
+          <div class="form-group">
+            <label for="details">Project Details</label>
+            <textarea id="details" name="details" placeholder="Tell us about your channel, current bottlenecks, and what you're looking for..." required></textarea>
+          </div>
+          <button type="submit" class="btn btn-gold form-submit" id="submit-btn">Submit Brief</button>
+        </form>
+        <div id="form-success" style="display:none;text-align:center;padding:40px 0;">
+          <div style="font-size:48px;margin-bottom:16px;">✓</div>
+          <h4 style="font-size:22px;margin-bottom:8px;color:#f5a623;">Brief Submitted!</h4>
+          <p style="color:#888;">We've received your details and will contact you within 24 hours.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== FOOTER ===================== -->
+<footer>
+  <div class="container">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <a href="#" class="nav-logo" style="display:inline-flex;margin-bottom:0;">
+          <div class="logo-icon">
+            <svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg>
+          </div>
+          ZENZ MEDIA
+        </a>
+        <p>A premium post-production agency dedicated to transforming raw footage into high-retention, cinematic experiences for elite creators and brands.</p>
+        <div class="social-links">
+          <a href="#" class="social-link" aria-label="Instagram">
+            <svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+          </a>
+          <a href="#" class="social-link" aria-label="YouTube">
+            <svg viewBox="0 0 24 24"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46a2.78 2.78 0 0 0-1.95 1.96A29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58A2.78 2.78 0 0 0 3.41 19.6C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 0 0 1.95-1.95A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02"/></svg>
+          </a>
+          <a href="#" class="social-link" aria-label="Twitter">
+            <svg viewBox="0 0 24 24"><path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"/></svg>
+          </a>
+          <a href="#" class="social-link" aria-label="LinkedIn">
+            <svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+          </a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h5>Services</h5>
+        <ul>
+          <li><a href="#services">YouTube Editing</a></li>
+          <li><a href="#services">Short-Form Content</a></li>
+          <li><a href="#services">Color Grading</a></li>
+          <li><a href="#services">Motion Graphics</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Agency</h5>
+        <ul>
+          <li><a href="#why-us">About Us</a></li>
+          <li><a href="#work">Our Work</a></li>
+          <li><a href="#pricing">Pricing</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© <span id="year"></span> Zenz Media. All rights reserved.</p>
+      <div class="footer-legal">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Service</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- ===================== SCRIPTS ===================== -->
+<script>
+  // Year
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  // Navbar scroll
+  const navbar = document.getElementById('navbar');
+  window.addEventListener('scroll', () => {
+    navbar.classList.toggle('scrolled', window.scrollY > 60);
+  });
+
+  // Hamburger menu
+  const hamburger = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobile-menu');
+  let menuOpen = false;
+
+  hamburger.addEventListener('click', () => {
+    menuOpen = !menuOpen;
+    mobileMenu.style.display = menuOpen ? 'flex' : 'none';
+  });
+
+  document.querySelectorAll('.mobile-link').forEach(link => {
+    link.addEventListener('click', () => {
+      menuOpen = false;
+      mobileMenu.style.display = 'none';
+    });
+  });
+
+  // Portfolio filter
+  function filterPortfolio(btn, category) {
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    document.querySelectorAll('.portfolio-item').forEach(item => {
+      const match = category === 'all' || item.dataset.category === category;
+      item.style.display = match ? 'block' : 'none';
+    });
+  }
+
+  // Scroll animations
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12 });
+
+  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+  // Contact form
+  function handleSubmit(e) {
+    e.preventDefault();
+    const btn = document.getElementById('submit-btn');
+    btn.textContent = 'Sending...';
+    btn.disabled = true;
+    setTimeout(() => {
+      document.getElementById('contact-form').style.display = 'none';
+      document.getElementById('form-success').style.display = 'block';
+    }, 1500);
+  }
+</script>
+</body>
+</html>
